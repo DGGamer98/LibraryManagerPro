@@ -43,29 +43,27 @@ public class GestioneLibri {
     }
 
     //TODO Davide: Da controllare BENE la logica di aggiornamento del metodo aggiorna + Builder
-    public void aggiorna(int id, Libro nuovo) {
-        Libro libro = archivioLibri.get(id);
+    public void aggiorna(int id, Libro libro) {
+        Libro libri = archivioLibri.get(id);
 
         if (libro == null) {
             LOGGER.warning("Libro non trovato");
             return;
-        }    
-        libro.getId();
-        libro.getTitolo();
-        libro.getAutore();
-        libro.getAnnoDiPubblicazione();
-        libro.isDisponibile();
-
+        }
+        
+        libri.setTitolo(libro.getTitolo());
+        libri.setAutore(libro.getAutore());
+        libri.setAnnoDiPubblicazione(libro.getAnnoDiPubblicazione());
+        libri.setDisponibile(libro.isDisponibile());
     }
-    
+
     public void elimina(int id) {
-        if(archivioLibri.containsKey(id)) {
+        if (archivioLibri.containsKey(id)) {
             archivioLibri.remove(id);
             LOGGER.info("Libro rimosso dall'archivio");
         } else {
             LOGGER.warning("Errore");
         }
     }
-    
-    
+
 }

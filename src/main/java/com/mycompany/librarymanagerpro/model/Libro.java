@@ -16,13 +16,44 @@ public class Libro {
     private int annoDiPubblicazione;
     private boolean disponibile;
 
-    //Creo il costruttore privato per non instanziarlo nel main
-    private Libro(Builder builder) {
-        this.id = builder.id;
-        this.titolo = builder.titolo;
-        this.autore = builder.autore;
-        this.annoDiPubblicazione = builder.annoDiPubblicazione;
-        this.disponibile = builder.disponibile;
+    public int getId() {
+        return id;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public String getAutore() {
+        return autore;
+    }
+
+    public int getAnnoDiPubblicazione() {
+        return annoDiPubblicazione;
+    }
+
+    public boolean isDisponibile() {
+        return disponibile;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public void setAutore(String autore) {
+        this.autore = autore;
+    }
+
+    public void setAnnoDiPubblicazione(int annoDiPubblicazione) {
+        this.annoDiPubblicazione = annoDiPubblicazione;
+    }
+
+    public void setDisponibile(boolean disponibile) {
+        this.disponibile = disponibile;
     }
 
     //Sovrascrizioe del toString per evitare l'hashcode
@@ -40,39 +71,35 @@ public class Libro {
     //Builder per inizializzare i campi senza usare i costruttori
     public static class Builder {
 
-        private int id;
-        private String titolo;
-        private String autore;
-        private int annoDiPubblicazione;
-        private boolean disponibile;
+        private Libro libro = new Libro();
 
         public Builder id(int id) {
-            this.id = id;
+            libro.setId(id);
             return this;
         }
 
         public Builder titolo(String titolo) {
-            this.titolo = titolo;
+            libro.setTitolo(titolo);
             return this;
         }
 
         public Builder autore(String autore) {
-            this.autore = autore;
+            libro.setAutore(autore);
             return this;
         }
 
         public Builder annoDiPubblicazione(int annoDiPubblicazione) {
-            this.annoDiPubblicazione = annoDiPubblicazione;
+            libro.setAnnoDiPubblicazione(annoDiPubblicazione);
             return this;
         }
 
         public Builder disponibile(boolean disponibile) {
-            this.disponibile = disponibile;
+            libro.setDisponibile(disponibile);
             return this;
         }
 
         public Libro build() {
-            return new Libro(this);
+            return libro;
         }
 
     }
