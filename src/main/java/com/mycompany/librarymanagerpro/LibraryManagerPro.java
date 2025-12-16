@@ -48,7 +48,8 @@ public class LibraryManagerPro {
         System.out.println("Login");
         controller.login(model.getUsername(), model.getPassword());
         
+        controller.mosraUtente(model);
         
-  
+               
     }
 }
